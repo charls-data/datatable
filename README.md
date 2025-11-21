@@ -22,11 +22,7 @@
 
 # datatable
 
-[![PyPi version](https://img.shields.io/pypi/v/datatable.svg)](https://pypi.org/project/datatable/)
-[![License](https://img.shields.io/pypi/l/datatable.svg)](https://github.com/h2oai/datatable/blob/main/LICENSE)
-[![Build Status](https://travis-ci.org/h2oai/datatable.svg?branch=main)](https://travis-ci.org/h2oai/datatable)
-[![Documentation Status](https://readthedocs.org/projects/datatable/badge/?version=latest)](https://datatable.readthedocs.io/en/latest/?badge=latest)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e72cadff26ed4ad68decd61b66b4c563)](https://www.codacy.com/app/st-pasha/datatable?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=h2oai/datatable&amp;utm_campaign=Badge_Grade)
+**Forked from [datatable](https://github.com/h2oai/datatable)**
 
 This is a Python package for manipulating 2-dimensional tabular data structures
 (aka data frames). It is close in spirit to [pandas][] or [SFrame][]; however we
@@ -35,7 +31,6 @@ package is closely related to R's [data.table][] and attempts to mimic its core
 algorithms and API.
 
 Requirements: Python 3.6+ (64 bit) and pip 20.3+.
-
 
 ## Project goals
 
@@ -85,25 +80,10 @@ the following:
   should have the ability to convert to another data-processing framework
   with ease.
 
+## Build
 
-## Installation
-
-On macOS, Linux and Windows systems installing datatable is as easy as
-```sh
-pip install datatable
-```
-
-On all other platforms a source distribution will be needed. For more
-information see [Build instructions](https://datatable.readthedocs.io/en/latest/install.html).
-
+[Build instructions](https://datatable.readthedocs.io/en/latest/install.html).
 
 ## See also
 
-* [Build instructions](https://datatable.readthedocs.io/en/latest/install.html)
 * [Documentation](https://datatable.readthedocs.io/en/latest/?badge=latest)
-
-
-  [pandas]: https://github.com/pandas-dev/pandas
-  [sframe]: https://github.com/turi-code/SFrame
-  [data.table]: https://github.com/Rdatatable/data.table
-  [driverless.ai]: https://www.h2o.ai/driverless-ai/

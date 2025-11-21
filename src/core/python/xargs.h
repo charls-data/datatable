@@ -68,6 +68,13 @@ class XArgs : public ArgParent {
     // Runtime arguments
     std::vector<Arg> bound_args_;
     std::unordered_map<PyObject*, size_t> kwd_map_;
+    // --- START: Handle lazy synonym initialization ---
+    struct Synonym {
+        const char* new_name_cstr;
+        size_t target_index;
+    };
+    std::vector<Synonym> pending_synonyms_;
+    // --- END ---
     size_t n_bound_args_;
     size_t n_varargs_;
     size_t n_varkwds_;

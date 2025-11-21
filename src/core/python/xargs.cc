@@ -98,6 +98,23 @@ void XArgs::finish_initialization() {
     bound_args_[i].init(i, this);
   }
 
+  // --- START: Handle lazy synonym initialization ---
+  if (has_renamed_args_) {
+      for (const auto& syn : pending_synonyms_) {
+          // PyUnicode_FromString
+          PyObject* py_new_name = PyUnicode_FromString(syn.new_name_cstr);
+          
+          if (!py_new_name) {
+              throw RuntimeError() << "Failed to create Python string for synonym: " 
+                                   << syn.new_name_cstr;
+          }
+          kwd_map_[py_new_name] = syn.target_index;
+      }
+
+      pending_synonyms_.clear(); 
+  }
+  // --- END ---
+
   xassert(arg_names_.size() == nargs_all_);
   xassert(nargs_required_ <= nargs_all_);
   xassert(ccfn_.fn);
@@ -179,10 +196,12 @@ XArgs* XArgs::add_synonym_arg(const char* new_name, const char* old_name) {
     if (std::strcmp(name, new_name) == 0) inew = i;
   }
   xassert(iold != NPOS);  // make sure that `old_name` exists
-  xassert(inew == NPOS);  (void)inew;
-  PyObject* py_new_name = PyUnicode_FromString(new_name);
-  xassert(py_new_name);
-  kwd_map_[py_new_name] = iold;
+  // Handle lazy synonym initialization
+  // xassert(inew == NPOS);  (void)inew;
+  // PyObject* py_new_name = PyUnicode_FromString(new_name);
+  // xassert(py_new_name);
+  // kwd_map_[py_new_name] = iold;
+  pending_synonyms_.push_back({new_name, iold});
   return this;
 }
 
