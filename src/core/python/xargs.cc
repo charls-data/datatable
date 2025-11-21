@@ -189,11 +189,11 @@ XArgs* XArgs::add_synonym_arg(const char* new_name, const char* old_name) {
   constexpr size_t NPOS = size_t(-1);
   has_renamed_args_ = true;
   size_t iold = NPOS;
-  size_t inew = NPOS;
+  // size_t inew = NPOS;
   for (size_t i = 0; i < arg_names_.size(); ++i) {
     const char* name = arg_names_[i];
     if (std::strcmp(name, old_name) == 0) iold = i;
-    if (std::strcmp(name, new_name) == 0) inew = i;
+    // if (std::strcmp(name, new_name) == 0) inew = i;
   }
   xassert(iold != NPOS);  // make sure that `old_name` exists
   // Handle lazy synonym initialization
